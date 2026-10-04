@@ -190,7 +190,7 @@ r.font.color.rgb = RGBColor(0, 0, 0)
 r.font.size = Pt(17)
 sub = doc.add_paragraph()
 sub.alignment = WD_ALIGN_PARAGRAPH.LEFT
-sub.add_run("测评日期：%s　｜　测评对象：学生3_LIHC_MRG预后_SCI稿件_v1.10（正文 5,970 词 / 摘要 238 词 / 题名 113 字符（不计空格）/ 41 条参考文献 / 6 图 8 表 + 补充材料 S1–S16 + S4b + S10b + TRIPOD 清单）" % DATE).font.size = Pt(9.5)
+sub.add_run("测评日期：%s　｜　测评对象：学生3_LIHC_MRG预后_SCI稿件_v1.11（正文 5,970 词 / 摘要 238 词 / 题名 113 字符（不计空格）/ 41 条参考文献 / 6 图 8 表 + 补充材料 S1–S16 + S4b + S10b + TRIPOD 清单）" % DATE).font.size = Pt(9.5)
 
 # =============================== 一、核心结论 =====================================
 h(doc, "一、核心结论", 1)
@@ -297,7 +297,7 @@ cards = [
               "摘要内不得使用文献引用；投稿须推荐 4–6 位审稿人；通讯作者须使用机构非商业邮箱。"
               "图件格式：原文只收「TIFF, GIF, JPEG, EPS, PPT, and Postscript」，并写明「PDF is not an acceptable file format for manuscripts or figures」——"
               "PDF 与 PNG 均不在收稿格式内，须用 EPS 或 TIFF。"
-              "本稿已于 v1.7 将摘要由 296 词压至 238 词、关键词由 8 个减至 5 个，v1.8 将题名末词由 HCC 改为全称（113 字符，不计空格），v1.9 修毕正文引文上标与六处图内文字遮挡，v1.10 厘定单一作者署名（作者栏占位符清零），各项均已对齐；"
+              "本稿已于 v1.7 将摘要由 296 词压至 238 词、关键词由 8 个减至 5 个，v1.8 将题名末词由 HCC 改为全称（113 字符，不计空格），v1.9 修毕正文引文上标与六处图内文字遮挡，v1.10 厘定单一作者署名（作者栏占位符清零），v1.11 补齐可解析的公开仓库地址（§Availability of code 由「接收后存 Zenodo」的承诺改为给出实际 URL），各项均已对齐；"
               "图件另备 EPS（矢量）与 TIFF（600 dpi）各 7 个，见交付目录 `图件_v2/投稿格式/`。来源与核验日期：Springer 官网、第三方期刊库，" + DATE + "。",
     ),
     dict(

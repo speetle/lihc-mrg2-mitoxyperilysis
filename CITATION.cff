@@ -14,7 +14,7 @@ contact:
     email: drmilo@gkd.edu.cn
 license: MIT
 # 数据部分许可：CC BY 4.0 —— 见 LICENSE-DATA.md（含上游数据来源与各自条款）
-version: "1.0.3"
+version: "1.0.4"
 date-released: "2026-10-05"
 repository-code: "https://github.com/speetle/lihc-mrg2-mitoxyperilysis"
 keywords:

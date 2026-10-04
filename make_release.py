@@ -24,7 +24,7 @@ SRC = {
     "figures":     os.path.join(DELIV, "图件_v2"),
 }
 # 稿件：图注与正文中引用的数字都在这份文件里，作为校验锚一并收录
-ANCHOR = os.path.join(DELIV, "学生3_LIHC_MRG预后_SCI稿件_v1.10.md")
+ANCHOR = os.path.join(DELIV, "学生3_LIHC_MRG预后_SCI稿件_v1.11.md")
 
 JUNK_DIRS = {"__pycache__", "历史版本_v1.0", "旧分析脚本", ".ipynb_checkpoints"}
 JUNK_SUFFIX = (".bak", ".pyc", ".log")
@@ -142,7 +142,7 @@ def main():
             if sk:
                 all_skipped[name] = sk
         if os.path.exists(ANCHOR):
-            shutil.copy2(ANCHOR, os.path.join(HERE, "稿件锚_学生3_LIHC_v1.10.md"))
+            shutil.copy2(ANCHOR, os.path.join(HERE, "稿件锚_学生3_LIHC_v1.11.md"))
             counts["稿件锚"] = 1
 
         if all_skipped:
@@ -175,7 +175,7 @@ def main():
 
     dist = os.path.join(HERE, "dist")
     os.makedirs(dist, exist_ok=True)
-    zpath = os.path.join(dist, "学生3_LIHC_代码与数据_v1.0.3_%s.zip" % stamp)
+    zpath = os.path.join(dist, "学生3_LIHC_代码与数据_v1.0.4_%s.zip" % stamp)
     files = []
     for dp, dns, fns in os.walk(HERE):
         dns[:] = [d for d in dns

@@ -41,7 +41,7 @@
 | 19 | Supplementary information: provide supplementary material | Same | Supplementary Items S1–S16, Item 1 | ✔ |
 | 20 | Funding: report the source of funding | Same | Declarations | ✔ No specific funding |
 | 21 | Conflicts of interest: declare competing interests | Same | Declarations | ✔ None declared |
-| 22 | Data and code availability: state where the data and code can be obtained | Same | Declarations | ✔ Public accession IDs given; derived data supplied as S1–S16; the code bundle is described, with deposit in Zenodo under a DOI promised on acceptance |
+| 22 | Data and code availability: state where the data and code can be obtained | Same | Declarations | ✔ Public accession IDs given; derived data supplied as S1–S16; the code bundle is openly available at https://github.com/speetle/lihc-mrg2-mitoxyperilysis |
 
 ## Items not satisfiable by this design, and why
 

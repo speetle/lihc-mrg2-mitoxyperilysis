@@ -26,7 +26,7 @@ fi
 
 git add -A
 git -c user.name="${GH_OWNER}" -c user.email="${GH_OWNER}@users.noreply.github.com" \
-    commit -q -m "Release v1.0.3: code and data for LIHC MRG transport-failure study" || echo "（无新改动可提交）"
+    commit -q -m "Release v1.0.4: code and data for LIHC MRG transport-failure study" || echo "（无新改动可提交）"
 
 # 用一次性的 remote URL 注入令牌，推送后立刻移除
 git remote remove origin 2>/dev/null || true
@@ -40,6 +40,6 @@ echo
 echo "下一步（建立 DOI，供稿件 Availability of code 段引用）："
 echo "  1) GitHub 仓库 → Settings → 勾选 Public（Zenodo 只能抓公开仓库）"
 echo "  2) 在 https://zenodo.org/account/settings/github/ 打开本仓库的开关"
-echo "  3) GitHub 仓库 → Releases → Draft a new release → tag 填 v1.0.3 → Publish"
+echo "  3) GitHub 仓库 → Releases → Draft a new release → tag 填 v1.0.4 → Publish"
 echo "  4) Zenodo 随即生成 DOI，把 DOI 填回稿件 Declarations 的 Availability of code 段"
 echo "  5) 建议同时填进 CITATION.cff 的 repository-code 字段"
