@@ -1,0 +1,75 @@
+{
+  "1": {
+    "png_px": [
+      3686,
+      4185
+    ],
+    "aspect": 0.881,
+    "panels_expected": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  "2": {
+    "png_px": [
+      3749,
+      1579
+    ],
+    "aspect": 2.374,
+    "panels_expected": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  "3": {
+    "png_px": [
+      4123,
+      1910
+    ],
+    "aspect": 2.159,
+    "panels_expected": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  "4": {
+    "png_px": [
+      3568,
+      1723
+    ],
+    "aspect": 2.071,
+    "panels_expected": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  "5": {
+    "png_px": [
+      3678,
+      3455
+    ],
+    "aspect": 1.065,
+    "panels_expected": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ]
+  },
+  "6": {
+    "png_px": [
+      3707,
+      3548
+    ],
+    "aspect": 1.045,
+    "panels_expected": [
+      "A",
+      "B"
+    ]
+  }
+}

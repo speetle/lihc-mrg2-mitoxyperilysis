@@ -1,0 +1,45 @@
+{
+  "discovery": {
+    "recomputed": {
+      "n": 3000,
+      "mean": 0.560817932528629,
+      "sd": 0.03327733180172451,
+      "p95": 0.6171959145775302
+    },
+    "deposited": {
+      "n_fitted": 3000,
+      "mean": 0.560817932528629,
+      "sd": 0.03327733180172451,
+      "p95": 0.6171959145775302,
+      "pct_matching_or_beating": 0.0,
+      "percentile_of_observed": 100.0,
+      "observed_MRG2": 0.6767316620241411
+    },
+    "match": true
+  },
+  "gse14520": {
+    "recomputed": {
+      "n": 3000,
+      "mean": 0.5552437012656244,
+      "sd": 0.031114848491142807,
+      "p95": 0.6085723521805572,
+      "pct_matching_or_beating": 0.5296666666666666,
+      "percentile_of_observed": 47.03333333333333
+    },
+    "deposited": {
+      "n_fitted": 3000,
+      "mean": 0.5552437012656244,
+      "sd": 0.031114848491142807,
+      "p95": 0.6085723521805572,
+      "pct_matching_or_beating": 0.5296666666666666,
+      "percentile_of_observed": 47.03333333333333
+    },
+    "match": true,
+    "cohort_rebuilt": {
+      "n": 242,
+      "events": 96,
+      "panel_available": 65,
+      "match": true
+    }
+  }
+}

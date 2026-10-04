@@ -1,0 +1,25 @@
+model,fold,n_genes,test_C,selected_genes
+ModelB,1,6,0.6516,KIF15;MAFG;PDGFA;JADE2;AKNA;TRAF3
+ModelB,2,2,0.4635,AKNA;MAFG
+ModelB,3,1,0.3706,KIF15
+ModelB,4,2,0.5906,KIF15;MAFG
+ModelB,5,2,0.5866,KIF15;AKNA
+ModelB,6,2,0.5205,KIF15;PPP1R10
+ModelB,7,3,0.7323,KIF15;PPP1R10;MAFG
+ModelB,8,1,0.686,KIF15
+ModelB,9,1,0.587,KIF15
+ModelB,10,2,0.5689,KIF15;MAFG
+ModelA,1,16,0.6934,all univariate hits retained (ridge)
+ModelA,2,19,0.5511,all univariate hits retained (ridge)
+ModelA,3,24,0.3357,all univariate hits retained (ridge)
+ModelA,4,20,0.6558,all univariate hits retained (ridge)
+ModelA,5,20,0.7039,all univariate hits retained (ridge)
+ModelA,6,19,0.5943,all univariate hits retained (ridge)
+ModelA,7,23,0.5512,all univariate hits retained (ridge)
+ModelA,8,19,0.6189,all univariate hits retained (ridge)
+ModelA,9,22,0.6553,all univariate hits retained (ridge)
+ModelA,10,24,0.518,all univariate hits retained (ridge)
+ModelB,mean,,0.5758,n_ok=10
+ModelB,sd,,0.1003,
+ModelA,mean,,0.5877,n_ok=10
+ModelA,sd,,0.1029,

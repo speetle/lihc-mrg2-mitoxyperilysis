@@ -1,0 +1,26 @@
+block,metric,value,lo,hi,p,note
+cohort,n tumours,115,,,,"GSE76427, GPL10558"
+cohort,deaths,23,,,,
+cohort,median follow-up (months),21.5,,,,
+cohort,panel genes available,87 / 92,,,,
+cohort,endpoint,overall survival,,,,
+MRG-2,genes applied,2 / 2,,,,
+MRG-2,C-index,0.402,0.2555,0.5477,,95% CI = bootstrap
+MRG-2,HR per SD,0.689,0.4093,1.1599,0.161,
+MRG-2,log-rank P,0.4108,,,,
+MRG-2,"median OS, low-risk (months)",57.84,,,,
+MRG-2,"median OS, high-risk (months)",75.48,,,,
+Model A,genes applied,23 / 23,,,,
+Model A,C-index,0.4261,0.29,0.555,,95% CI = bootstrap
+Model A,HR per SD,0.6852,0.4303,1.091,0.1112,
+Model A,log-rank P,0.0408,,,,
+Model A,"median OS, low-risk (months)",57.84,,,,
+Model A,"median OS, high-risk (months)",not reached,,,,
+MRG-2 adjusted,"score HR per SD (age, sex, stage)",0.6323,0.3649,1.0957,0.1022,
+MRG-2 adjusted,advanced stage HR,2.6429,1.0757,6.4931,0.0341,
+MRG-2 adjusted,age HR,1.0454,0.6661,1.6406,0.8469,
+MRG-2 adjusted,male sex HR,1.2805,0.2793,5.8708,0.7503,
+Proliferation control,MKI67 HR per SD,0.7213,0.4068,1.279,0.2636,recomputed and deposited: 数据/revised/gse76427_prolif_control.json
+Proliferation control,TOP2A HR per SD,0.859,0.5015,1.4711,0.5797,recomputed and deposited: 数据/revised/gse76427_prolif_control.json
+Proliferation control,CCNB1 HR per SD,1.0995,0.6752,1.7904,0.7029,recomputed and deposited: 数据/revised/gse76427_prolif_control.json
+Proliferation control,20-gene score HR per SD,0.856,0.4699,1.5595,0.6115,genes available 20/20

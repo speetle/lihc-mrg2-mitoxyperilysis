@@ -1,0 +1,27 @@
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+*~
+~$*
+
+# 中间态与备份（发布包不应包含任何 .bak / 归档）
+*.bak
+*.bak_*
+历史版本*/
+旧分析脚本/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# 大体积原始下载（不随包发布；复现脚本会自动重新拉取）
+raw_downloads/
+*.h5
+*.rds
+
+# 出版过程产物
+dist/*.zip
+dist/*.tar.gz

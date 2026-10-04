@@ -1,0 +1,18 @@
+{
+ "n": 360,
+ "deaths": 129,
+ "n_genes": 23,
+ "unpenalised_converged": true,
+ "unpenalised_max_abs_coef": 0.3472339963930917,
+ "unpenalised_max_HR": 1.327352207551235,
+ "unpenalised_min_HR": 0.7066399577091297,
+ "unpenalised_n_p_lt_05": 1,
+ "unpenalised_n_abs_coef_gt_1": 0,
+ "unpenalised_apparent_C": 0.6934818941504178,
+ "ridge_max_abs_coef": 0.057308082783814385,
+ "ridge_max_HR": 1.0583971230428728,
+ "ridge_n_p_lt_05": 0,
+ "ridge_apparent_C": 0.6840111420612813,
+ "design_condition_number": 5.9922383340655765,
+ "univariate_sign_flips_unpenalised": 0
+}

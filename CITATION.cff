@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite both the article and this archive."
+title: "Code and data for: Stability selection does not guarantee external transport: a mitoxyperilysis score fails validation in hepatocellular carcinoma"
+type: software
+authors:
+  - family-names: Lian
+    given-names: Bin
+    orcid: "https://orcid.org/0000-0002-1477-9137"
+    affiliation: "School of Health, Guangzhou Vocational and Technical University of Science and Technology, Guangzhou, Guangdong, China"
+contact:
+  - family-names: Lian
+    given-names: Bin
+    orcid: "https://orcid.org/0000-0002-1477-9137"
+    email: drmilo@gkd.edu.cn
+license: MIT
+# 数据部分许可：CC BY 4.0 —— 见 LICENSE-DATA.md（含上游数据来源与各自条款）
+version: "1.0.3"
+date-released: "2026-10-05"
+repository-code: "https://github.com/speetle/lihc-mrg2-mitoxyperilysis"
+keywords:
+  - hepatocellular carcinoma
+  - prognostic index
+  - stability selection
+  - external validation
+  - replication failure
+  - mitoxyperilysis
+  - TCGA-LIHC
+  - GSE14520

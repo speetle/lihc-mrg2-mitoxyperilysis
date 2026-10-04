@@ -1,0 +1,35 @@
+{
+ "cohort": {
+  "n": 115,
+  "events": 23,
+  "n_prolif_available": 20,
+  "platform": "GPL10558",
+  "endpoint": "OS (months)",
+  "note": "Each marker standardised within the cohort (Z-score); univariate Cox per marker."
+ },
+ "MKI67": {
+  "HR_per_SD": 0.7213,
+  "HR_lo": 0.4068,
+  "HR_hi": 1.279,
+  "p": 0.2636
+ },
+ "TOP2A": {
+  "HR_per_SD": 0.859,
+  "HR_lo": 0.5015,
+  "HR_hi": 1.4711,
+  "p": 0.5797
+ },
+ "CCNB1": {
+  "HR_per_SD": 1.0995,
+  "HR_lo": 0.6752,
+  "HR_hi": 1.7904,
+  "p": 0.7029
+ },
+ "20-gene proliferation score": {
+  "genes_available": 20,
+  "HR_per_SD": 0.856,
+  "HR_lo": 0.4699,
+  "HR_hi": 1.5595,
+  "p": 0.6115
+ }
+}

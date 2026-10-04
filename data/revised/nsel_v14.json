@@ -1,0 +1,11 @@
+{
+ "nsel_median": 11,
+ "nsel_iqr": [
+  9,
+  13
+ ],
+ "nsel_range": [
+  5,
+  16
+ ]
+}
