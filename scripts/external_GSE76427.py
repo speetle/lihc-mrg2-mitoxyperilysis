@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-学生3 LIHC —— 外部验证：GSE76427（Illumina HumanHT-12 v4, GPL10558）
+LIHC —— 外部验证：GSE76427（Illumina HumanHT-12 v4, GPL10558）
 
 输入：
   /tmp/GSE76427_series_matrix.txt.gz

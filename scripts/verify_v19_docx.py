@@ -11,7 +11,9 @@
   B. 正文残留 `[数字]` 方括号 = 0（引文必须变成真上标、不带方括号）
   C. 上标 run 计数与分类：引文 42 + 头部标记 3 = 45（v1.10 起作者为单一作者，
      头部标记由 4 降为 3：`1,*` / `1` / `*`）
-  D. 作者行 = `Authors: Bin Lian1,*`，其中 `1,*` 上标
+  D. 作者行 = `Authors: Bin Lian, PhD1,*`，其中 `1,*` 上标（PhD 为 v1.12 起按 DDS 题名页
+     硬要求补的最高学位；下方另设「Correspondence 行同样带 PhD」的配套断言，防只改一处）
+  D2. Correspondence 行含 `Bin Lian, PhD` —— 与 D 同源，两处必须同时成立
   E. `* Corresponding author.` 独立成段，`*` 上标
   F. 关键词 ≤ 5 个
   G. 参考文献序号 1..N 为**字面文本**、连续；`numPr` 命中数 = 0；N 由 md 侧决定
@@ -94,23 +96,29 @@ def main(path, md_path=None):
     check("C 上标 run = 45（头部标记 3 + 正文引文 42）", ok_c,
           f"总 {len(all_sup)} = 头部 {len(sups_head)} {sups_head} + 正文 {len(sups_body)}")
 
-    # D 作者行
+    # D 作者行（v1.12 起：按 DDS IFA 题名页要求补最高学位）
     auth = [p for p in doc.paragraphs if p.text.strip().startswith('Authors:')]
     ok_d = False; det_d = "未找到 Authors 行"
     if len(auth) == 1:
         p = auth[0]
         det_d = repr(p.text)
         sup_txts = [r.text for r in p.runs if r.font.superscript]
-        ok_d = (p.text.strip() == 'Authors: Bin Lian1,*'
+        ok_d = (p.text.strip() == 'Authors: Bin Lian, PhD1,*'
                 and sup_txts == ['1,*']
                 and '^' not in p.text)
-    check("D 作者行 = `Authors: Bin Lian1,*`（`1,*` 真上标）", ok_d, det_d)
+    check("D 作者行 = `Authors: Bin Lian, PhD1,*`（`1,*` 真上标；PhD 为 DDS 题名页硬要求）", ok_d, det_d)
 
     # E Corresponding author 段
     corr = [p for p in doc.paragraphs if p.text.strip() == '* Corresponding author.']
     ok_e = len(corr) == 1 and [r.text for r in corr[0].runs if r.font.superscript] == ['*']
     check("E `* Corresponding author.` 独立成段，`*` 上标", ok_e,
           f"命中 {len(corr)} 段")
+
+    # D2 Correspondence 行（与 D 同源：学位必须两处同时带上）
+    corr_p = [p for p in doc.paragraphs if p.text.strip().startswith('Correspondence:')]
+    ok_d2 = len(corr_p) == 1 and 'Bin Lian, PhD' in corr_p[0].text
+    check("D2 Correspondence 行含 `Bin Lian, PhD`（与 D 同源）", ok_d2,
+          repr(corr_p[0].text[:90]) if corr_p else "未找到 Correspondence 行")
 
     # F 关键词
     kw = [p for p in doc.paragraphs if p.text.strip().startswith('Keywords:')]

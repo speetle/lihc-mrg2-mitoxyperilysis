@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 学生3 LIHC —— 一键重跑（在已激活的 venv 内执行）
+# LIHC —— 一键重跑（在已激活的 venv 内执行）
 # 用法：  bash RERUN.sh
 # 预计：  40–60 分钟（步骤 5 的 10 个独立随机划分约占 6 分钟）
 # 注意：  步骤 1 需联网（cBioPortal REST API 拉取 TCGA-LIHC）
@@ -37,7 +37,7 @@ $PY scripts/make_figS1_calibration.py
 
 step "7/7  机械校验：图件版式 / 数值闸门 / 参考文献双源核验"
 $PY scripts/figcheck_lihc.py
-$PY scripts/数值指纹.py --snap ../学生3_LIHC_MRG预后_SCI稿件_v1.11.md || true
+$PY scripts/数值指纹.py --snap ../Manuscript_LIHC_v1.12.md || true
 $PY scripts/ref_audit_v15.py || true
 
 printf "\n\033[1m全部步骤结束。产物在 data/ 与 supplementary/。\033[0m\n"

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""学生3 LIHC —— 图 1–6 的期刊规格绘制（调用 make_figures_v2 的样式与数据加载）。"""
+"""LIHC —— 图 1–6 的期刊规格绘制（调用 make_figures_v2 的样式与数据加载）。"""
 from make_figures_v2 import *  # noqa: F401,F403
 from matplotlib.ticker import NullLocator
 

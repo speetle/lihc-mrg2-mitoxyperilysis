@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-学生3 LIHC —— 外部验证图（Figure 5）与新增补充表
+LIHC —— 外部验证图（Figure 5）与新增补充表
 
 Figure 5 四个子图
   (A) GSE14520 中 MRG-2 中位分割的 KM 曲线（含在险人数）

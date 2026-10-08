@@ -1,6 +1,6 @@
 #target illustrator
 
-// 学生3 LIHC —— v1.9/v1.10 用 Illustrator 重拼六图 + 存 .ai 源文件 + 导出投稿 EPS
+// LIHC —— v1.9/v1.10 用 Illustrator 重拼六图 + 存 .ai 源文件 + 导出投稿 EPS
 //
 // 为什么要有这一步：.ai 与 EPS 必须来自**修好遮挡之后**的 SVG。旧组图源文件
 // （23:39）与旧投稿格式（23:45）都是旧构图，已由 v19_archive_figs.py 搬进

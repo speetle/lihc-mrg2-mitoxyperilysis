@@ -208,6 +208,27 @@ def convert(md_path, out_path, base_size=10.5, latin='Times New Roman',
         line = lines[i]; st = line.strip()
         if not st:
             i += 1; continue
+        # ⚠️ 2026-10-05 实测补：围栏代码块（``` / ```text）**必须**整体吃掉。
+        #    旧行为是把 ```` ```text ```` 与 ```` ``` ```` 两行当普通段落印进 Word，
+        #    成品里就出现字面的三连反引号 —— 属「只在交付件上可见」的残留，源 md 上查永远全绿。
+        #    块内容**不做任何行内解析**（是给人整块复制用的），只套等宽字体。
+        if st.startswith('```'):
+            i += 1
+            while i < len(lines) and not lines[i].strip().startswith('```'):
+                src = lines[i].rstrip()
+                if src.strip():
+                    p = doc.add_paragraph()
+                    p.paragraph_format.left_indent = Cm(0.5)
+                    p.paragraph_format.space_after = Pt(0)
+                    p.paragraph_format.line_spacing = 1.0
+                    rr = p.add_run(src)          # 注意：不经 add_runs，故不做行内解析
+                    rr.font.name = MONO
+                    rr._element.rPr.rFonts.set(qn('w:eastAsia'), MONO)
+                    rr.font.size = Pt(base_size - 0.5)
+                i += 1
+            i += 1                                # 跳过围栏结束行
+            doc.add_paragraph()
+            continue
         if st.startswith('|') and i + 1 < len(lines) and is_sep(lines[i + 1]):
             rows = [st]; j = i + 1
             while j < len(lines) and lines[j].strip().startswith('|'):
@@ -269,26 +290,36 @@ def convert(md_path, out_path, base_size=10.5, latin='Times New Roman',
     doc.save(out_path)
     # 复核：落盘后数一遍，让"有没有真的转成上标"当场可见
     d2 = Document(out_path)
+
+    def _all_paras(document):
+        """正文段落 ＋ **全部表格单元格**段落（含嵌套表）。
+        计数口径必须覆盖交付件里所有可见文本：只数 document.paragraphs 会把表内残留漏成 0，
+        属「够不着的判据」（LGG 第 14 轮同族缺陷）。"""
+        for p in document.paragraphs:
+            yield p
+
+        def _walk(tables):
+            for t in tables:
+                for row in t.rows:
+                    for c in row.cells:
+                        for p in c.paragraphs:
+                            yield p
+                        yield from _walk(c.tables)
+        yield from _walk(document.tables)
+
     sup = 0; lit = 0; citsup = []
-    for p in d2.paragraphs:
+    for p in _all_paras(d2):
         for r in p.runs:
             if r.font.superscript:
                 sup += 1
                 if re.fullmatch(r'[\d,\u2013\u2014\-]{1,12}', r.text):
                     citsup.append(r.text)
         lit += p.text.count('^')
-    for t in d2.tables:
-        for row in t.rows:
-            for c in row.cells:
-                for p in c.paragraphs:
-                    for r in p.runs:
-                        if r.font.superscript:
-                            sup += 1
-                            if re.fullmatch(r'[\d,\u2013\u2014\-]{1,12}', r.text):
-                                citsup.append(r.text)
+    n_para = sum(1 for _ in _all_paras(d2))
     print('OK ->', out_path)
-    print('   上标 run: %d（其中纯数字=引文上标 %d）| 字面 ^: %d | 段落: %d | 表: %d'
-          % (sup, len(citsup), lit, len(d2.paragraphs), len(d2.tables)))
+    print('   上标 run: %d（其中纯数字=引文上标 %d）| 字面 ^: %d'
+          '  [口径：正文段落 ＋ 全部表格单元格，共 %d 段] | 表: %d'
+          % (sup, len(citsup), lit, n_para, len(d2.tables)))
     if not cites_all:
         # `--no-cites` 模式：纯数字上标只可能来自显式 `^...^` 标记。若引文数 > 0，
         # 立刻把哪些 run 被误上标化打出来，不让它静默落盘。

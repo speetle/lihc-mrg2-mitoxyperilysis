@@ -1,6 +1,6 @@
 #target illustrator
 
-// 学生3 LIHC —— 用 Illustrator 组图并保存 .ai 源文件
+// LIHC —— 用 Illustrator 组图并保存 .ai 源文件
 // 输入：/tmp/aiwork/FigureN.svg（面板已按 panel_A/panel_B/... 分组）
 // 输出：/tmp/aiwork/ai/FigureN.ai  以及  /tmp/aiwork/ai/Figures_全部_源文件.ai（6 画板）
 // 全程 ASCII 路径，避免 ExtendScript 中文路径解码问题。

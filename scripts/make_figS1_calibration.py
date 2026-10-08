@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""学生3 LIHC —— 补充图 Figure S1（校准 + 时间依赖 Brier）的**正式生成脚本**。
+"""LIHC —— 补充图 Figure S1（校准 + 时间依赖 Brier）的**正式生成脚本**。
 
 为什么补这个脚本：
     此前 Figure S1 是在会话里内联生成的，交付目录中**没有对应的生成脚本**，

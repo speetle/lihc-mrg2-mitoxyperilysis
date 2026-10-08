@@ -2,13 +2,13 @@
 
 **Running title:** Stability selection does not predict external transport
 
-**Authors:** Bin Lian^1,*^
+**Authors:** Bin Lian, PhD^1,*^
 
-**Affiliations:** ^1^ School of Health, Guangzhou Vocational and Technical University of Science and Technology, Guangzhou, Guangdong, China
+**Affiliations:** ^1^ School of Health, Guangzhou Vocational and Technical University of Science and Technology, No. 1038 Guangcong 9th Road, Zhongluotan, Baiyun District, Guangzhou 510550, Guangdong, China
 
 ^*^ Corresponding author.
 
-**Correspondence:** Bin Lian, School of Health, Guangzhou Vocational and Technical University of Science and Technology, Guangzhou, Guangdong, China. E-mail: drmilo@gkd.edu.cn. ORCID iD: 0000-0002-1477-9137.
+**Correspondence:** Bin Lian, PhD, School of Health, Guangzhou Vocational and Technical University of Science and Technology, No. 1038 Guangcong 9th Road, Zhongluotan, Baiyun District, Guangzhou 510550, Guangdong, China. E-mail: drmilo@gkd.edu.cn. ORCID iD: 0000-0002-1477-9137.
 
 ---
 

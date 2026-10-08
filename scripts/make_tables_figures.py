@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""学生3 LIHC —— 补充材料表 + 主图生成（全部取自真实分析输出）"""
+"""LIHC —— 补充材料表 + 主图生成（全部取自真实分析输出）"""
 import os, json
 import numpy as np
 import pandas as pd

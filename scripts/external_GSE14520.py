@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-学生3 LIHC —— 外部验证：GSE14520（Roessler 等，HCC 切除队列）
+LIHC —— 外部验证：GSE14520（Roessler 等，HCC 切除队列）
 
 选它的理由：GSE76427 只有 23 个死亡事件，对 2 基因乃至 23 基因的评分都严重欠功效
 （点估计 C≈0.40 但 95% CI 0.26–0.55 含 0.5；连 MKI67/TOP2A 等公认增殖预后标志物

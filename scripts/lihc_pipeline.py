@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-学生3 LIHC —— MRG 预后模型全流程（真实数据，无编造）  v2
+LIHC —— MRG 预后模型全流程（真实数据，无编造）  v2
 
 数据源：cBioPortal REST API, study = lihc_tcga_pan_can_atlas_2018
 表达谱：..._rna_seq_v2_mrna_median_all_sample_Zscores

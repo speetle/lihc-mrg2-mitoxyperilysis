@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-v1.8 下游同步（学生3 LIHC）—— 题名去缩写后，把散落在各处的那一句改一致。
+v1.8 下游同步（LIHC）—— 题名去缩写后，把散落在各处的那一句改一致。
 
 涉及：
   1. 补充材料 Item 1（TRIPOD 清单）与其生成脚本 make_supplement_v15.py；
