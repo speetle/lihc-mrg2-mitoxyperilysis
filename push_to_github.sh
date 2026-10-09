@@ -85,9 +85,62 @@ else
   echo "◆ 真实推送：远端 = $CLEAN_URL"
 fi
 
+# ── 带看门狗的克隆（真推路径）
+#    为什么必须设上限：本机实测 github.com 的 443 被代理拦截时 `git clone` 会**挂死**
+#    （HTTP/2 framing error / CONNECT tunnel failed，6 分钟无返回），整个脚本静默卡住。
+#    macOS 无 coreutils 的 `timeout`，故用后台任务 + 轮询（与预演段同一口径）。
+#    ⚠️ 2026-10-10 实测：**正常**克隆本仓库（0.5 MB / 168 文件）在弱网下要 **102 秒**，
+#       而旧阈值 60 秒会把它**误杀**并报成「443 被拦截」—— 阈值必须高于实测合法耗时。
+#       现设 480 × 0.5 s = **240 秒**（约为实测合法耗时的 2.4 倍）。
+#    返回码：1 = 看门狗超时（疑似网络被拦截）；其余 = git 自身退出码（多为凭据/权限）。
+_clone_wd() {
+  local _p _n _err
+  _err="$WORK/clone.err"
+  GIT_TERMINAL_PROMPT=0 git clone "$@" 2>"$_err" &
+  _p=$!; _n=0
+  while kill -0 "$_p" 2>/dev/null; do
+    _n=$((_n + 1))
+    if [ "$_n" -ge 480 ]; then
+      kill "$_p" 2>/dev/null || true
+      wait "$_p" 2>/dev/null || true
+      return 1
+    fi
+    sleep 0.5
+  done
+  wait "$_p"
+}
+
 echo "◆ 克隆远端（只取 ${GH_BRANCH}）…"
-git clone -q --branch "$GH_BRANCH" --single-branch "$ORIGIN_URL" "$WORK/repo" 2>/dev/null \
-  || git clone -q "$ORIGIN_URL" "$WORK/repo"
+_rc=0
+if [ "$DRY" -eq 1 ] && [ -z "${GH_REMOTE_URL:-}" ]; then
+  # 预演：临时裸仓库是**刚建的空仓库**，`--branch main` 必然报「远端无此分支」→ 直接用无分支的一次克隆，
+  #        免得每次预演都先失败一次再走重试（2026-10-08 版正是在重试路径上误报「克隆失败」）。
+  _clone_wd -q "$ORIGIN_URL" "$WORK/repo" || _rc=$?
+else
+  _clone_wd -q --branch "$GH_BRANCH" --single-branch "$ORIGIN_URL" "$WORK/repo" || _rc=$?
+  if [ "$_rc" -ne 0 ]; then
+    rm -rf "$WORK/repo"      # 第一次可能留下半成品目录，重试前先清干净
+    _rc=0                    # ★ 必须显式清零：`cmd || _rc=$?` 在**命令成功**时**不会**执行赋值，
+                             #   于是 _rc 会留着上一次的失败码 → 判据读到「假失败」。这就是 2026-10-08 版坏掉的成因。
+    _clone_wd -q "$ORIGIN_URL" "$WORK/repo" || _rc=$?
+  fi
+fi
+if [ "$_rc" -ne 0 ]; then
+  echo "❌ 克隆远端失败：${CLEAN_URL}（本次**未改动远端**）" >&2
+  if [ "$DRY" -eq 1 ] && [ -z "${GH_REMOTE_URL:-}" ]; then
+    echo "   判定：预演目标是**本机临时裸仓库**（不涉网络）—— 属 git 自身错误，与 443/代理无关。" >&2
+    echo "   git 原始输出末尾：" >&2
+    tail -n 3 "$WORK/clone.err" 2>/dev/null | sed 's/^/     /' >&2
+  elif [ "$_rc" -eq 1 ]; then
+    echo "   判定：240 秒内无响应 —— 疑似 github.com 的 443 被代理/防火墙拦截。" >&2
+    echo "   → 本机 git 通道长期不可用时，改走 api.github.com 的 Git Data API 镜像推送，不要在此反复重试。" >&2
+  else
+    echo "   判定：**非超时**失败（git 退出码 ${_rc}）—— 多为令牌/权限问题（GH_TOKEN 是否含 repo 写权限？）。" >&2
+    echo "   git 原始输出末尾：" >&2
+    tail -n 3 "$WORK/clone.err" 2>/dev/null | sed 's/^/     /' >&2
+  fi
+  exit 3
+fi
 
 cd "$WORK/repo"
 git config core.quotepath false   # 中文路径按原样显示，不打印八进制转义
@@ -186,7 +239,8 @@ if [ "$DRY" -eq 1 ]; then
   REAL_URL="${GH_REMOTE_URL:-$CLEAN_URL}"
   echo "     核对对象：$REAL_URL"
   DEGRADED=0   # 1 = 真远端影响面没核对上；光看 ✅ 文字不算通过，退出码也要跟着说真话
-  # 带看门狗的克隆：网络被墙／被限流时 30 秒即降级，不会把整个预演挂死。
+  # 带看门狗的克隆：阈值与真推路径同一口径（480 × 0.5 s = 240 s）。
+  # ⚠️ 2026-10-10 实测：本机克隆本仓库要 ~102 秒，旧阈值 30 秒必然误判为失败。
   # （macOS 自带没有 coreutils 的 `timeout`，故用后台任务 + 轮询。）
   _clone_real() {
     GIT_TERMINAL_PROMPT=0 git clone -q --branch "$GH_BRANCH" --single-branch \
@@ -194,7 +248,7 @@ if [ "$DRY" -eq 1 ]; then
     _p=$!; _n=0
     while kill -0 "$_p" 2>/dev/null; do
       _n=$((_n + 1))
-      if [ "$_n" -ge 60 ]; then
+      if [ "$_n" -ge 480 ]; then
         kill "$_p" 2>/dev/null || true
         wait "$_p" 2>/dev/null || true
         return 1
