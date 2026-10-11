@@ -1,7 +1,7 @@
 # LIHC —— 代码与数据发布包
 
 **配套稿件**：*Stability selection does not guarantee external transport: a mitoxyperilysis score fails validation in hepatocellular carcinoma*
-**作者（通讯作者）**：连彬（Bin Lian），School of Health, Guangzhou Vocational and Technical University of Science and Technology，drmilo@gkd.edu.cn，ORCID 0000-0002-1477-9137
+**作者（通讯作者）**：连彬（Bin Lian），School of Health Sciences, Guangzhou Vocational University of Science and Technology，drmilo@gkd.edu.cn，ORCID 0000-0002-1477-9137
 **快照日期**：2026-10-05
 
 ---
