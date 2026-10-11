@@ -64,7 +64,7 @@ EXTERNAL = [
 TITLE = ("Stability selection does not guarantee external transport: a mitoxyperilysis score "
          "fails validation in hepatocellular carcinoma")
 JOURNAL = "Digestive Diseases and Sciences"
-AUTHOR = ("Bin Lian, School of Health, Guangzhou Vocational and Technical University of "
+AUTHOR = ("Bin Lian, School of Health Sciences, Guangzhou Vocational University of "
           "Science and Technology, Guangzhou, Guangdong, China")
 EMAIL = "drmilo@gkd.edu.cn"
 
